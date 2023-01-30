@@ -1,0 +1,62 @@
+
+/*Count the number of jobs across different industry across different locations.*/
+select Industry,Location,SUM(Employees_count)as Total_Employees from Company as a
+join jobs as b
+on b.Company_id =a.company_id
+group by Industry, Location;
+
+
+
+
+/*For instance, how many Frontend Engineer jobs are there in Bangalore as compared
+to Data Analytics jobs in Bangalore*/
+
+select Designation,Location,SUM(Employees_count)as Total_Employees from Company as a
+join jobs as b
+on b.Company_id =a.company_id
+where Location like 'Bangalore' and Designation like 'Front End Engineer' 
+group by Designation, Location
+union
+select Designation,Location,SUM(Employees_count)as Total_Employees from Company as a
+join jobs as b
+on b.Company_id =a.company_id
+where Location like 'Bangalore' and Designation like 'Data Analyst' 
+group by Designation, Location;
+
+
+
+
+
+
+
+
+/*or how many Data Analytics jobs are there in
+Bangalore as compared to number of Data Scientists job in Gurgaon - this needs to
+be done in SQL but presented in the above created Excel dashboard */
+
+select Industry,Location,SUM(Employees_count)as Total_Employees from Company as a
+join jobs as b
+on b.Company_id =a.company_id
+where Location like 'Mumbai' and Industry like 'Manufacturing' 
+group by Industry, Location
+union
+select Industry,Location,SUM(Employees_count)as Total_Employees from Company as a
+join jobs as b
+on b.Company_id =a.company_id
+where Location like 'Bangalore' and Industry like 'IT Services and IT Consulting' 
+group by Industry, Location;
+-----------------------------------------------------------------------------------------------
+
+select Designation,Location,SUM(Employees_count)as Total_Employees from Company as a
+join jobs as b
+on b.Company_id =a.company_id
+where Location like 'Bangalore' and Designation like 'Front End Engineer' 
+group by Designation, Location
+union
+select Designation,Location,SUM(Employees_count)as Total_Employees from Company as a
+join jobs as b
+on b.Company_id =a.company_id
+where Location like 'Bangalore' and Designation like 'Data Analyst' 
+group by Designation, Location;
+
+
